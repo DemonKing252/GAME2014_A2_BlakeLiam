@@ -21,6 +21,9 @@ public class JoyStickController : MonoBehaviour
     [SerializeField]
     LayerMask platforms;
 
+    [SerializeField]
+    LayerMask noJump;
+
     bool held = false;
     
 
@@ -64,12 +67,20 @@ public class JoyStickController : MonoBehaviour
             joystick.transform.position = transform.position;
             localJoystickP = Vector2.zero;
         }
+        // Ray cast fired below the player to detect collisions:
         RaycastHit2D rayCast = Physics2D.CapsuleCast(player.GetComponent<CapsuleCollider2D>().bounds.center, player.GetComponent<CapsuleCollider2D>().bounds.size, player.GetComponent<CapsuleCollider2D>().direction, 0.0f, Vector2.down, 0.1f, platforms);
-        RaycastHit2D rayCastXP = Physics2D.CapsuleCast(player.GetComponent<CapsuleCollider2D>().bounds.center, player.GetComponent<CapsuleCollider2D>().bounds.size, player.GetComponent<CapsuleCollider2D>().direction, 0.0f, Vector2.right, 0.1f, platforms);
-        RaycastHit2D rayCastXN = Physics2D.CapsuleCast(player.GetComponent<CapsuleCollider2D>().bounds.center, player.GetComponent<CapsuleCollider2D>().bounds.size, player.GetComponent<CapsuleCollider2D>().direction, 0.0f, Vector2.left, 0.1f, platforms);
+        RaycastHit2D rayCast1 = Physics2D.CapsuleCast(player.GetComponent<CapsuleCollider2D>().bounds.center, player.GetComponent<CapsuleCollider2D>().bounds.size, player.GetComponent<CapsuleCollider2D>().direction, 0.0f, Vector2.down, 0.1f, noJump);
+        
+        // Ray cast fired to the right to prevent players from getting stuck on the side of platforms:
+        RaycastHit2D rayCastXP = Physics2D.CapsuleCast(player.GetComponent<CapsuleCollider2D>().bounds.center, player.GetComponent<CapsuleCollider2D>().bounds.size, player.GetComponent<CapsuleCollider2D>().direction, 0.0f, Vector2.right, 0.1f, noJump);
+
+        // Ray cast fired to the right to prevent players from getting stuck on the side of platforms:
+        RaycastHit2D rayCastXN = Physics2D.CapsuleCast(player.GetComponent<CapsuleCollider2D>().bounds.center, player.GetComponent<CapsuleCollider2D>().bounds.size, player.GetComponent<CapsuleCollider2D>().direction, 0.0f, Vector2.left, 0.1f, noJump);
+
 
         if (localJoystickP.x > minJoystickSens && rayCastXP.collider == null)
         {
+
             player.GetComponent<SpriteRenderer>().flipX = false;
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(localJoystickP.x * playerController.maxVelX * Time.deltaTime, player.GetComponent<Rigidbody2D>().velocity.y);
         }
@@ -78,12 +89,17 @@ public class JoyStickController : MonoBehaviour
             player.GetComponent<SpriteRenderer>().flipX = true;
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(localJoystickP.x * playerController.maxVelX * Time.deltaTime, player.GetComponent<Rigidbody2D>().velocity.y);
         }
-        if (rayCast.collider != null)
+        if (rayCast.collider != null || rayCast1.collider != null)
         {
+            //Debug.DrawRay(player.GetComponent<CapsuleCollider2D>().bounds.center, Vector2.down * 0.1f, Color.green, 2.0f);
+
             playerController.grounded = true; 
             if (localJoystickP.y > 0.5f)
-                player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, Mathf.Clamp(playerController.jumpVel * localJoystickP.y * Time.deltaTime, 0.0f, playerController.maxJumpVel));
-            
+            {
+                Debug.Log("Jumping");
+                player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, Mathf.Clamp(playerController.jumpVel * Time.deltaTime, 0.0f, playerController.maxJumpVel));
+            }
+
         }
         else
             playerController.grounded = false;
