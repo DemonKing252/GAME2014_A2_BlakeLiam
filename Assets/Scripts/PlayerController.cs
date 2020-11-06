@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0.0f, 300.0f), Camera.main.transform.position.y, -10.0f);
+        Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0.0f, 300.0f), Mathf.Clamp(transform.position.y, 0.0f, 10.0f), -10.0f);
         if (grounded)
         {
             if (GetComponent<Rigidbody2D>().velocity.x < 0.1f && GetComponent<Rigidbody2D>().velocity.x > -0.1f)
