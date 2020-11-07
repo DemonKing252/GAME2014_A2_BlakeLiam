@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum PlayerState
@@ -40,6 +41,11 @@ public class PlayerController : MonoBehaviour
     {
         UpdateHealth(100.0f);
         playerState = PlayerState.Idle;
+
+        if (Utilities.scenesChanged == 0)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
     // Used elsewhere in the future
     public void UpdateHealth(float newHealth)
