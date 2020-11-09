@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3301361542184397440}
   - component: {fileID: 3301361542184397441}
   - component: {fileID: 3301361542184397446}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: WayPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 3301361542372492722}
   - component: {fileID: 3301361542372492733}
   m_Layer: 9
-  m_Name: VMovingPlatform
+  m_Name: MovingPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 3301361542420429222}
   - component: {fileID: 3301361542420429223}
   - component: {fileID: 3301361542420429220}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: WayPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

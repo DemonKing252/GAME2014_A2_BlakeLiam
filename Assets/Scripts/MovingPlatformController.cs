@@ -36,9 +36,18 @@ public class MovingPlatformController : MonoBehaviour
         {
             FindObjectOfType<PlayerController>().gameObject.transform.position += (direction == Direction.Horizontal ? Vector3.right : Vector3.up) * (dir * maxSpeed * Time.deltaTime);
         }
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("TreasureChest");
+        foreach (var it in gos)
+        {
+            if (it.GetComponent<Collider2D>().IsTouching(platform.GetComponent<Collider2D>()))
+            {
+                it.transform.position += (direction == Direction.Horizontal ? Vector3.right : Vector3.up) * (dir * maxSpeed * Time.deltaTime);
+            }
+        }
     }
     public void OnHit(Collider2D hit)
     {
+        // Reverse direction:
         dir *= -1.0f;
     }
 }

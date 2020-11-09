@@ -17,6 +17,8 @@ public enum PlayerState
 
 public class PlayerController : MonoBehaviour
 {
+    public bool attached = false;
+
     [SerializeField]
     public float jumpVel;
 
@@ -57,8 +59,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0.0f, 300.0f), Mathf.Clamp(transform.position.y, 0.0f, 10.0f), -10.0f);
-        if (grounded)
+
+        if (!attached)
+            Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0.0f, 300.0f), Mathf.Clamp(transform.position.y, 0.0f, 10.0f), -10.0f);
+        
+        if (grounded && !attached)
         {
             if (GetComponent<Rigidbody2D>().velocity.x < 0.1f && GetComponent<Rigidbody2D>().velocity.x > -0.1f)
             {
