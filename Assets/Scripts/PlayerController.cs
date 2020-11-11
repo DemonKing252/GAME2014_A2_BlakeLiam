@@ -10,8 +10,8 @@ public enum PlayerState
     Idle,
     Run,
     Jump,
-    Dead,
-    Swing
+    Swing,
+    Dead
 }
 
 
@@ -80,6 +80,11 @@ public class PlayerController : MonoBehaviour
             GetComponent<Animator>().SetInteger("State", (int)PlayerState.Jump);
         }
 
+
+        if (FindObjectOfType<JoyStickController>().localJoystickP.y < -FindObjectOfType<JoyStickController>().minJoystickSens)
+        {
+            GetComponent<Animator>().SetInteger("State", (int)PlayerState.Swing);
+        }
         //Debug.Log(GetComponent<Rigidbody2D>().velocity.x);
     }
 }
