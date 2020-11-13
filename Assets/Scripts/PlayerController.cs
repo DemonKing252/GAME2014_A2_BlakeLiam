@@ -17,6 +17,9 @@ public enum PlayerState
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    public AudioSource theme, btnClick, swing, jump;
+
     public bool attached = false;
 
     [SerializeField]
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        theme.Play();
         UpdateHealth(100.0f);
         playerState = PlayerState.Idle;
 
@@ -55,6 +59,7 @@ public class PlayerController : MonoBehaviour
         health = newHealth;
         healthBar.GetComponent<Image>().rectTransform.sizeDelta = new Vector2((health / 100.0f) * 500.0f, healthBar.GetComponent<Image>().rectTransform.sizeDelta.y);
     }
+    bool should_play_swing = true;
     // Update is called once per frame
     void Update()
     {
@@ -83,8 +88,15 @@ public class PlayerController : MonoBehaviour
 
         if (FindObjectOfType<JoyStickController>().localJoystickP.y < -FindObjectOfType<JoyStickController>().minJoystickSens)
         {
+            if (should_play_swing)
+            {
+                swing.Play();
+                should_play_swing = false;
+            }
             GetComponent<Animator>().SetInteger("State", (int)PlayerState.Swing);
         }
+        else
+            should_play_swing = true;
         //Debug.Log(GetComponent<Rigidbody2D>().velocity.x);
     }
 }

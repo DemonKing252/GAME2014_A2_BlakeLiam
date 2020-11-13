@@ -5,10 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+
+    [SerializeField]
+    AudioSource theme, btnClick;
+
+    //
     // Start is called before the first frame update
     void Start()
     {
-        
+        theme.Play();
     }
 
     // Update is called once per frame
@@ -18,16 +23,20 @@ public class MainMenuController : MonoBehaviour
     }
     public void StartGame()
     {
+        btnClick.Play();
         Utilities.scenesChanged++;
         SceneManager.LoadScene(2);
     }
     public void HowToPlay()
     {
+        btnClick.Play();
         Utilities.scenesChanged++;
         SceneManager.LoadScene(1);
     }
     public void QuitGame()
     {
+        btnClick.Play();
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

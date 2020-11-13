@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class HowToPlayController : MonoBehaviour
 {
+    [SerializeField]
+    AudioSource theme, btnClick;
+
     // Start is called before the first frame update
     void Start()
     {
+        theme.Play();
         if (Utilities.scenesChanged == 0)
         {
             SceneManager.LoadScene(0);
@@ -21,6 +25,7 @@ public class HowToPlayController : MonoBehaviour
     }
     public void BackToMenu()
     {
+        btnClick.Play();
         Utilities.scenesChanged++;
         SceneManager.LoadScene(0);
     }

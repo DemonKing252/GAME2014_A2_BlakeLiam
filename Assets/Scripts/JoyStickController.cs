@@ -98,6 +98,7 @@ public class JoyStickController : MonoBehaviour
             playerController.grounded = true; 
             if (localJoystickP.y > 0.7f)
             {
+                playerController.jump.Play();
                 //Debug.Log("Jumping");
                 player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, Mathf.Clamp(playerController.jumpVel * Time.deltaTime, 0.0f, playerController.maxJumpVel));
             }
