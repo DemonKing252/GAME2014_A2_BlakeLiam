@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
 
         if (!attached)
-            Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0.0f, 300.0f), Mathf.Clamp(transform.position.y, 0.0f, 10.0f), -10.0f);
+            Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0.0f, 185.0f), Mathf.Clamp(transform.position.y, 0.0f, 10.0f), -10.0f);
         
         if (grounded && !attached)
         {

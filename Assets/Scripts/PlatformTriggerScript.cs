@@ -17,6 +17,7 @@ public class PlatformTriggerScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        transform.parent.GetComponent<MovingPlatformController>().OnHit(collision);
+        if (collision.tag == "Plat")
+            transform.parent.GetComponent<MovingPlatformController>().OnHit(collision);
     }
 }
