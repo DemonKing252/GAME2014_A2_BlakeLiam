@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Overworld.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/LoseScene.unity
+    guid: a76dd8910e218404cb20a7cdd628ef57
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: da26432b49b9b2a4fbfd67eb8975df06
   m_configObjects: {}
