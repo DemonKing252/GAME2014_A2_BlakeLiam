@@ -37,17 +37,17 @@ public class SwingingArm : MonoBehaviour
         if (playerAttached)
         {
             //Debug.Log(boneNum.ToString());
-            Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0.0f, 185.0f), Mathf.Clamp(transform.position.y, 0.0f, 10.0f), -10.0f);
+            Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0.0f, 220.0f), Mathf.Clamp(transform.position.y, 0.0f, 18.9f), -10.0f);
 
             player.transform.position = transform.position;
 
             if (joyStick.localJoystickP.x > 0.3f)
             {
-                rb.AddForce(Vector2.right * 4.0f);
+                rb.AddForce(Vector2.right * 6.0f);
             }
             else if (joyStick.localJoystickP.x < -0.3f)
             {
-                rb.AddForce(Vector2.left * 4.0f);
+                rb.AddForce(Vector2.left * 6.0f);
             }
         }
         if (joyStick.localJoystickP.y < 0.4f && playerAttached)
