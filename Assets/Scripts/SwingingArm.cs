@@ -43,11 +43,11 @@ public class SwingingArm : MonoBehaviour
 
             if (joyStick.localJoystickP.x > 0.3f)
             {
-                rb.AddForce(Vector2.right * 6.0f);
+                rb.AddForce(Vector2.right * 800.0f * Time.deltaTime);
             }
             else if (joyStick.localJoystickP.x < -0.3f)
             {
-                rb.AddForce(Vector2.left * 6.0f);
+                rb.AddForce(Vector2.left * 800.0f * Time.deltaTime);
             }
         }
         if (joyStick.localJoystickP.y < 0.4f && playerAttached)
@@ -55,7 +55,12 @@ public class SwingingArm : MonoBehaviour
             playerAttached = false; 
             playerCont.attached = false;
 
-            player.GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity * 2.5f;
+            Vector2 v = GetComponent<Rigidbody2D>().velocity * 450.0f * Time.deltaTime;
+
+            v = new Vector2(Mathf.Clamp(v.x, -6.0f, +6.0f), Mathf.Clamp(v.y, -6.0f, +6.0f));
+            player.GetComponent<Rigidbody2D>().velocity = v;
+
+            Debug.Log(player.GetComponent<Rigidbody2D>().velocity.ToString());
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

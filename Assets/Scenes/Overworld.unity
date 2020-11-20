@@ -533,7 +533,7 @@ MonoBehaviour:
   player: {fileID: 1484738846}
   playerController: {fileID: 0}
   localJoystickP: {x: 0, y: 0}
-  minJoystickSens: 0.3
+  minJoystickSens: 0.1
   platforms:
     serializedVersion: 2
     m_Bits: 1280
@@ -17878,11 +17878,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1484738849, guid: 80b528bb70f3ed844a04578eb7168e1b, type: 3}
       propertyPath: maxVelX
-      value: 1000
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1484738849, guid: 80b528bb70f3ed844a04578eb7168e1b, type: 3}
       propertyPath: maxJumpVel
-      value: 7
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 1484738849, guid: 80b528bb70f3ed844a04578eb7168e1b, type: 3}
       propertyPath: healthBar
@@ -17906,11 +17906,11 @@ PrefabInstance:
       objectReference: {fileID: 1812232610}
     - target: {fileID: 7172317756738420552, guid: 80b528bb70f3ed844a04578eb7168e1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 220
+      value: -8.13
       objectReference: {fileID: 0}
     - target: {fileID: 7172317756738420552, guid: 80b528bb70f3ed844a04578eb7168e1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 50
+      value: -1.09
       objectReference: {fileID: 0}
     - target: {fileID: 7172317756738420552, guid: 80b528bb70f3ed844a04578eb7168e1b, type: 3}
       propertyPath: m_LocalPosition.z

@@ -11,6 +11,7 @@ public class HowToPlayController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(3040, 1440, false);
         theme.Play();
         if (Utilities.scenesChanged == 0)
         {
