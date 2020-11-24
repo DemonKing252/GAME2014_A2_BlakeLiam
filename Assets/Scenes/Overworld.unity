@@ -366,10 +366,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 42873159}
     m_Modifications:
-    - target: {fileID: 5684865619422813700, guid: 33e048df44ef0e74c86538f6e8e0101e, type: 3}
-      propertyPath: maxSpeed
-      value: 125
-      objectReference: {fileID: 0}
     - target: {fileID: 5713588793867966816, guid: 33e048df44ef0e74c86538f6e8e0101e, type: 3}
       propertyPath: m_Name
       value: VirtualGuy

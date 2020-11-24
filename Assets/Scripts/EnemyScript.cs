@@ -33,7 +33,15 @@ public class EnemyScript : MonoBehaviour
 
     private void _Move()
     {
+
         GetComponent<Rigidbody2D>().velocity = Vector2.ClampMagnitude(new Vector2(maxSpeed * dir * Time.deltaTime, GetComponent<Rigidbody2D>().velocity.y), 5.0f);
+
+        if (Vector3.Magnitude(GetComponent<Rigidbody2D>().velocity) > 0.1f)
+        {
+            GetComponent<Animator>().SetInteger("State", 1);
+        }
+        else
+            GetComponent<Animator>().SetInteger("State", 0);
     }
 
     private void _LinkProxyCheck()

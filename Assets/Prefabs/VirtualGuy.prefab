@@ -159,7 +159,7 @@ Animator:
   m_GameObject: {fileID: 5713588793867966816}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e511e38caae65834692388bcd5c9b2c5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 770930f3dcc041843940bb681b0b9752, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   walls:
     serializedVersion: 2
     m_Bits: 12800
-  maxSpeed: 250
+  maxSpeed: 125
   dir: 1
 --- !u!70 &1030150314
 CapsuleCollider2D:
