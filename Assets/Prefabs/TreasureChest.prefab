@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4712028916354451025}
   - component: {fileID: 4712028916354451026}
   - component: {fileID: 3089722565645699242}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TreasureChest
   m_TagString: TreasureChest
   m_Icon: {fileID: 0}

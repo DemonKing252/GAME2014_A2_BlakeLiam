@@ -19,10 +19,10 @@ TagManager:
   - Tiles
   - NoJumping
   - Hazard
-  - 
-  - 
-  - 
-  - 
+  - StairBoundary
+  - NinjaFrog
+  - MaskGuy
+  - VirtualGuy
   - 
   - 
   - 

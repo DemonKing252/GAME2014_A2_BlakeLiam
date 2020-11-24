@@ -40,6 +40,12 @@ public class PlayerController : MonoBehaviour
     public bool grounded = true;
 
     public float health;
+    public bool alive = true;
+
+
+    [SerializeField]
+    public AudioSource deathChannel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -62,30 +68,43 @@ public class PlayerController : MonoBehaviour
         healthBar.GetComponent<Image>().rectTransform.sizeDelta = new Vector2((health / 100.0f) * 500.0f, healthBar.GetComponent<Image>().rectTransform.sizeDelta.y);
     }
     bool should_play_swing = true;
+    float timeSinceDeath = 0.0f;
     // Update is called once per frame
     void Update()
     {
 
-
-        if (!attached)
-            Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0.0f, 220.0f), Mathf.Clamp(transform.position.y, 0.0f, 18.9f), -10.0f);
-        
-        if (grounded && !attached)
+        if (alive)
         {
-            if (GetComponent<Rigidbody2D>().velocity.x < 0.1f && GetComponent<Rigidbody2D>().velocity.x > -0.1f)
+            if (!attached)
+                Camera.main.transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0.0f, 220.0f), Mathf.Clamp(transform.position.y, 0.0f, 18.9f), -10.0f);
+
+            if (grounded && !attached)
             {
-                GetComponent<Animator>().SetInteger("State", (int)PlayerState.Idle);
+                if (GetComponent<Rigidbody2D>().velocity.x < 0.1f && GetComponent<Rigidbody2D>().velocity.x > -0.1f)
+                {
+                    GetComponent<Animator>().SetInteger("State", (int)PlayerState.Idle);
+                }
+                else
+                {
+                    GetComponent<Animator>().SetInteger("State", (int)PlayerState.Run);
+                }
+
             }
             else
             {
-                GetComponent<Animator>().SetInteger("State", (int)PlayerState.Run);
+                GetComponent<Animator>().SetInteger("State", (int)PlayerState.Jump);
             }
-            
         }
         else
         {
-            GetComponent<Animator>().SetInteger("State", (int)PlayerState.Jump);
+            timeSinceDeath += Time.deltaTime;
+
+            if (timeSinceDeath >= GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length)
+            {
+                SceneManager.LoadScene(4);
+            }
         }
+        
 
 
         if (FindObjectOfType<JoyStickController>().localJoystickP.y < -FindObjectOfType<JoyStickController>().minJoystickSens)
