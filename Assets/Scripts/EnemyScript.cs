@@ -15,7 +15,12 @@ public class EnemyScript : MonoBehaviour
     float maxSpeed = 25.0f;
 
     [SerializeField]
-    float dir = 1.0f;
+    public float dir = 1.0f;
+
+    public bool jumping = false;
+    float timer = 0.0f;
+
+    public bool canseeplayer = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +38,13 @@ public class EnemyScript : MonoBehaviour
 
     private void _Move()
     {
+        if (!jumping)
+            GetComponent<Rigidbody2D>().velocity = Vector2.ClampMagnitude(new Vector2(maxSpeed * dir * Time.deltaTime, GetComponent<Rigidbody2D>().velocity.y), 5.0f);
+        else
+        {
+            timer += Time.deltaTime;
+        }
 
-        GetComponent<Rigidbody2D>().velocity = Vector2.ClampMagnitude(new Vector2(maxSpeed * dir * Time.deltaTime, GetComponent<Rigidbody2D>().velocity.y), 5.0f);
 
         if (Vector3.Magnitude(GetComponent<Rigidbody2D>().velocity) > 0.1f)
         {
@@ -53,6 +63,7 @@ public class EnemyScript : MonoBehaviour
     {
         bool ray = Physics2D.Linecast(transform.position, edgeCast.position, floor);
         bool ray2 = Physics2D.Linecast(transform.position, wallCast.position, walls);
+        bool ray3 = Physics2D.Linecast(transform.position, transform.position - new Vector3(0.0f, 1.5f, 0.0f), floor);
 
         if (!ray)
         {
@@ -63,6 +74,11 @@ public class EnemyScript : MonoBehaviour
         {
             dir *= -1f;
             transform.localScale = new Vector3(dir * 0.7f, 0.7f, 0.7f);
+        }
+        if (ray3 && timer >= 0.2f)
+        {
+            jumping = false;
+            timer = 0.0f;
         }
 
     }
