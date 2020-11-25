@@ -50,7 +50,7 @@ public class SwingingArm : MonoBehaviour
                 rb.AddForce(Vector2.left * 800.0f * Time.deltaTime);
             }
         }
-        if (joyStick.localJoystickP.y < 0.4f && playerAttached)
+        if (joyStick.localJoystickP.y < 0.1f && playerAttached)
         {
             playerAttached = false; 
             playerCont.attached = false;

@@ -45,13 +45,20 @@ public class EnemyScript : MonoBehaviour
             timer += Time.deltaTime;
         }
 
-
-        if (Vector3.Magnitude(GetComponent<Rigidbody2D>().velocity) > 0.1f)
+        if (!jumping)
         {
-            GetComponent<Animator>().SetInteger("State", 1);
+
+            if (Vector3.Magnitude(GetComponent<Rigidbody2D>().velocity) > 0.1f)
+            {
+                GetComponent<Animator>().SetInteger("State", 1);
+            }
+            else
+                GetComponent<Animator>().SetInteger("State", 0);
         }
         else
-            GetComponent<Animator>().SetInteger("State", 0);
+        {
+            GetComponent<Animator>().SetInteger("State", 2);
+        }
     }
 
     private void _LinkProxyCheck()
