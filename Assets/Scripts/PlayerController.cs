@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField]
-    public AudioSource deathChannel;
+    public AudioSource deathChannel, explosion;
 
 
     // Start is called before the first frame update
@@ -67,11 +67,12 @@ public class PlayerController : MonoBehaviour
         health = newHealth;
         healthBar.GetComponent<Image>().rectTransform.sizeDelta = new Vector2((health / 100.0f) * 500.0f, healthBar.GetComponent<Image>().rectTransform.sizeDelta.y);
     }
-    bool should_play_swing = true;
+    public bool should_play_swing = false;
     float timeSinceDeath = 0.0f;
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(should_play_swing);
 
         if (alive)
         {
@@ -109,15 +110,15 @@ public class PlayerController : MonoBehaviour
 
         if (FindObjectOfType<JoyStickController>().localJoystickP.y < -FindObjectOfType<JoyStickController>().minJoystickSens)
         {
-            if (should_play_swing)
+            if (!should_play_swing)
             {
                 swing.Play();
-                should_play_swing = false;
+                should_play_swing = true;
             }
             GetComponent<Animator>().SetInteger("State", (int)PlayerState.Swing);
         }
         else
-            should_play_swing = true;
+            should_play_swing = false;
         //Debug.Log(GetComponent<Rigidbody2D>().velocity.x);
     }
 }

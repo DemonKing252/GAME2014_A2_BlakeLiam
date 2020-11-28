@@ -72,7 +72,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb23c1b925e08504788d4caa107fa7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canSeePlayer: 0
 --- !u!1 &1796686441
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dcc01acaf78fb24b9b453e136745caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dynamite: {fileID: 6213515742300928932, guid: 4f82f08225ad98742af21f26c09b34c3, type: 3}
+  scoreController: {fileID: 3373141511954152998, guid: 53ff3fb58d852db40bf072378ed7e5b9, type: 3}
   edgeCast: {fileID: 1796686442}
   wallCast: {fileID: 7427465089166585912}
   linkProxyCast: {fileID: 0}
@@ -256,6 +257,8 @@ MonoBehaviour:
   maxSpeed: 125
   dir: 1
   jumping: 0
+  canseeplayer: 0
+  health: 100
 --- !u!70 &1030150314
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
