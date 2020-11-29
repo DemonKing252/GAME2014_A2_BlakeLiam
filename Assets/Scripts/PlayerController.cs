@@ -17,6 +17,8 @@ public enum PlayerState
 
 public class PlayerController : MonoBehaviour
 {
+    public Ability ability;
+
     [SerializeField]
     public AudioSource theme, btnClick, swing, jump;
 
@@ -49,7 +51,11 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
+        ability = new Ability();
+        ability.Zero();
+
+
         Screen.SetResolution(3040, 1440, false);
 
         theme.Play();
@@ -72,7 +78,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(should_play_swing);
 
         if (alive)
         {
