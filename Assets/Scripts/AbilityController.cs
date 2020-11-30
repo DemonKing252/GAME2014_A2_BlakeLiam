@@ -33,7 +33,8 @@ public class AbilityController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
+        healthTimeRemaining = freezeTimeRemaining = speedTimeRemaining = 0.0f;
     }
 
     // Update is called once per frame
@@ -44,14 +45,23 @@ public class AbilityController : MonoBehaviour
         speedTimeRemaining -= Time.deltaTime;
 
         if (healthTimeRemaining < 0.0f)
+        {
+            FindObjectOfType<PlayerController>().ability.healthPotions = 0;
             healthTimeRemaining = 0.0f;
+        }
 
         if (freezeTimeRemaining < 0.0f)
+        {
             freezeTimeRemaining = 0.0f;
+            FindObjectOfType<PlayerController>().ability.freezePotions = 0;
+        }
 
         if (speedTimeRemaining < 0.0f)
+        {
             speedTimeRemaining = 0.0f;
+            FindObjectOfType<PlayerController>().ability.speedPotions = 0;
 
+        }
         UpdateGUI();
     }
 

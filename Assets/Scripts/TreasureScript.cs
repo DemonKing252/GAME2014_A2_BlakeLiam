@@ -13,7 +13,7 @@ public class TreasureScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int rand = Random.Range(0, 2);
+        int rand = Random.Range(0, 3);
         switch (rand)
         {
             case 0:
@@ -33,9 +33,8 @@ public class TreasureScript : MonoBehaviour
     {
         if (FindObjectOfType<PlayerController>().GetComponentInChildren<BoxCollider2D>().IsTouching(GetComponent<BoxCollider2D>()))
         {
-            Debug.Log("yes");
-            Debug.Log(ability.healthPotions.ToString());
-
+            FindObjectOfType<PlayerController>().pickup.Play();
+            
             FindObjectOfType<PlayerController>().ability.healthPotions += ability.healthPotions;
             FindObjectOfType<PlayerController>().ability.freezePotions += ability.freezePotions;
             FindObjectOfType<PlayerController>().ability.speedPotions += ability.speedPotions;

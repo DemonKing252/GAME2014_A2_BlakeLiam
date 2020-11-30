@@ -7,6 +7,10 @@ public class SpikeController : MonoBehaviour
     float angle = 0.0f;
     bool rotateNow = false;
     float timer = 0.0f;
+
+    [SerializeField]
+    Collider2D damageCollider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,9 +47,27 @@ public class SpikeController : MonoBehaviour
             rotateNow = false;
 
         }
-        
+
+        if (GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Collider2D>().IsTouching(damageCollider))
+        {
+            GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().UpdateHealth(GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().health - (30.0f * Utilities.damageFactor[(int)Utilities.diff] * Time.deltaTime));
+
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().health <= 0.0f)
+            {
+                GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().alive = false;
+                GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Animator>().SetInteger("State", (int)PlayerState.Dead);
+            }
+        }
+
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().deathChannel.Play();
+        }
+    }
     public void TrigEnter(Collider2D collider)
     {
         if (collider.tag == "Player")

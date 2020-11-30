@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WinScript : MonoBehaviour
 {
+    [SerializeField]
+    Text score, kills; 
 
     [SerializeField]
     AudioSource theme, btnClick;
@@ -18,6 +21,9 @@ public class WinScript : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+        score.text = "Score: " + Utilities.score.ToString();
+        kills.text = "Kills: " + Utilities.kills.ToString();
+        
     }
 
     // Update is called once per frame
@@ -27,12 +33,15 @@ public class WinScript : MonoBehaviour
     }
     public void PlayAgain()
     {
+        Utilities.score = Utilities.kills = 0;
+
         btnClick.Play();
         Utilities.scenesChanged++;
         SceneManager.LoadScene(3);
     }
     public void BackToMenu()
     {
+        Utilities.score = Utilities.kills = 0;
         btnClick.Play();
         Utilities.scenesChanged++;
         SceneManager.LoadScene(0);

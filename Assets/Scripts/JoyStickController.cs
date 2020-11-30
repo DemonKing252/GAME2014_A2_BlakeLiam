@@ -81,13 +81,13 @@ public class JoyStickController : MonoBehaviour
         {
             player.GetComponentInChildren<BoxCollider2D>().transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             player.GetComponent<SpriteRenderer>().flipX = false;
-            player.GetComponent<Rigidbody2D>().velocity = new Vector2(localJoystickP.x * playerController.maxVelX * Time.deltaTime, player.GetComponent<Rigidbody2D>().velocity.y);
+            player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<PlayerController>().speed * localJoystickP.x * playerController.maxVelX * Time.deltaTime, player.GetComponent<Rigidbody2D>().velocity.y);
         }
         else if (localJoystickP.x < -minJoystickSens && rayCastXN.collider == null && !player.GetComponent<PlayerController>().attached)
         {
             player.GetComponentInChildren<BoxCollider2D>().transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
             player.GetComponent<SpriteRenderer>().flipX = true;
-            player.GetComponent<Rigidbody2D>().velocity = new Vector2(localJoystickP.x * playerController.maxVelX * Time.deltaTime, player.GetComponent<Rigidbody2D>().velocity.y);
+            player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<PlayerController>().speed * localJoystickP.x * playerController.maxVelX * Time.deltaTime, player.GetComponent<Rigidbody2D>().velocity.y);
         }
 
         //Debug.Log(player.GetComponent<Rigidbody2D>().velocity.ToString());

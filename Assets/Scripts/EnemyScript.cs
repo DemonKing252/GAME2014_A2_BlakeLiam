@@ -32,9 +32,13 @@ public class EnemyScript : MonoBehaviour
     bool should_die = false;
     float angle = 0.0f;
     bool spawn = false;
+
+    public AbilityController abilityUI;
+
     // Start is called before the first frame update
     void Start()
     {
+        abilityUI = FindObjectOfType<AbilityController>();
     }
     
     // Update is called once per frame
@@ -73,40 +77,50 @@ public class EnemyScript : MonoBehaviour
 
                 int rng = Random.Range(0, 100);
                 
-                if (rng <= 20 && !spawn)
+                if (rng <= 20)
                 {
-                    spawn = true;
                     Instantiate(dynamite, transform.position, Quaternion.identity);
-                    Destroy(gameObject);
                 }
+                Destroy(gameObject);
+                FindObjectOfType<PlayerController>().kills++;
             }
         }
     }
 
     private void _Move()
     {
-
-        if (!jumping)
-            GetComponent<Rigidbody2D>().velocity = Vector2.ClampMagnitude(new Vector2(maxSpeed * dir * Time.deltaTime, GetComponent<Rigidbody2D>().velocity.y), 5.0f);
-        else
+        if (abilityUI.freezeTimeRemaining <= 0.0f)
         {
-            timer += Time.deltaTime;
-        }
+            GetComponent<Animator>().enabled = true;
 
-        if (!jumping)
-        {
-
-            if (Vector3.Magnitude(GetComponent<Rigidbody2D>().velocity) > 0.1f)
+            if (!jumping)
+                GetComponent<Rigidbody2D>().velocity = Vector2.ClampMagnitude(new Vector2(maxSpeed * dir * Time.deltaTime, GetComponent<Rigidbody2D>().velocity.y), 5.0f);
+            else
             {
-                GetComponent<Animator>().SetInteger("State", 1);
+                timer += Time.deltaTime;
+            }
+
+            if (!jumping)
+            {
+
+                if (Vector3.Magnitude(GetComponent<Rigidbody2D>().velocity) > 0.1f)
+                {
+                    GetComponent<Animator>().SetInteger("State", 1);
+                }
+                else
+                    GetComponent<Animator>().SetInteger("State", 0);
             }
             else
-                GetComponent<Animator>().SetInteger("State", 0);
+            {
+                GetComponent<Animator>().SetInteger("State", 2);
+            }
         }
         else
         {
-            GetComponent<Animator>().SetInteger("State", 2);
+            GetComponent<Animator>().enabled = false;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
+
     }
 
     private void _LinkProxyCheck()

@@ -11,7 +11,7 @@ public class ScoreController : MonoBehaviour
     private float[] scoreArr = { 5.0f, 10.0f, 15.0f };
 
     [SerializeField]
-    float score = 0.0f;
+    public float score = 0.0f;
 
     public void AddKillToScore()
     {

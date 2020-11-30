@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoseSceneScript : MonoBehaviour
 {
 
     [SerializeField]
     AudioSource theme, btnClick;
+
+    [SerializeField]
+    Text score, kills;
 
     //
     // Start is called before the first frame update
@@ -19,6 +23,8 @@ public class LoseSceneScript : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+        score.text = "Score: " + Utilities.score.ToString();
+        kills.text = "Kills: " + Utilities.kills.ToString();
     }
 
     // Update is called once per frame
@@ -28,12 +34,14 @@ public class LoseSceneScript : MonoBehaviour
     }
     public void PlayAgain()
     {
+        Utilities.score = Utilities.kills = 0;
         btnClick.Play();
         Utilities.scenesChanged++;
         SceneManager.LoadScene(3);
     }
     public void BackToMenu()
     {
+        Utilities.score = Utilities.kills = 0;
         btnClick.Play();
         Utilities.scenesChanged++;
         SceneManager.LoadScene(0);

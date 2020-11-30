@@ -17,4 +17,7 @@ public class Utilities
 
     public static float[] damageFactor = { 0.5f, 1.0f, 1.5f };
 
+    public static int score = 0;
+    public static int kills = 0;
+
 }

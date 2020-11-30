@@ -17,6 +17,9 @@ public enum PlayerState
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    GameObject abilityRef;
+
     public Ability ability;
 
     [SerializeField]
@@ -44,10 +47,16 @@ public class PlayerController : MonoBehaviour
     public float health;
     public bool alive = true;
 
+    public float speed = 1.0f;
 
     [SerializeField]
-    public AudioSource deathChannel, explosion;
+    GameObject endTrigger;
 
+    // may be used elsewhere to avoid having multiple audio variables in sub classes of "enemy" for example
+    [SerializeField]
+    public AudioSource deathChannel, explosion, pickup;
+
+    public int kills = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +87,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GetComponent<Collider2D>().IsTouching(endTrigger.GetComponent<Collider2D>()))
+        {
+            Utilities.score = (int)FindObjectOfType<ScoreController>().score;
+            Utilities.kills = kills;
+            SceneManager.LoadScene(5);
+        }
 
         if (alive)
         {
@@ -107,6 +122,8 @@ public class PlayerController : MonoBehaviour
 
             if (timeSinceDeath >= GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length)
             {
+                Utilities.score = (int)FindObjectOfType<ScoreController>().score;
+                Utilities.kills = kills;
                 SceneManager.LoadScene(4);
             }
         }
@@ -125,5 +142,20 @@ public class PlayerController : MonoBehaviour
         else
             should_play_swing = false;
         //Debug.Log(GetComponent<Rigidbody2D>().velocity.x);
+    }
+    void FixedUpdate()
+    {
+
+        if (abilityRef.GetComponent<AbilityController>().healthTimeRemaining > 0.0f)
+            if (health <= 100.0f)
+                UpdateHealth(health + (30.0f * Time.deltaTime));
+
+        if (abilityRef.GetComponent<AbilityController>().speedTimeRemaining > 0.0f)
+        {
+            speed = 1.5f;
+        }
+        else
+            speed = 1.0f;
+            
     }
 }

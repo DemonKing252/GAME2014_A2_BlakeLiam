@@ -3035,7 +3035,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1851701058}
   - component: {fileID: 1851701057}
-  - component: {fileID: 1851701056}
   m_Layer: 0
   m_Name: Abilities
   m_TagString: Untagged
@@ -3043,25 +3042,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1851701056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851701055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d662f231a0f8740a06393e502c0875, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthTimeRemaining: 0
-  freezeTimeRemaining: 0
-  speedTimeRemaining: 0
-  texts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!212 &1851701057
 SpriteRenderer:
   m_ObjectHideFlags: 0
