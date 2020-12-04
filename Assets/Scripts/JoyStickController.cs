@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
-
+/*
+File: JoyStickController.cs
+Author: Liam Blake
+Created: 2020-11-08
+Modified: 2020-11-14
+*/
 public class JoyStickController : MonoBehaviour
 {
     [SerializeField]

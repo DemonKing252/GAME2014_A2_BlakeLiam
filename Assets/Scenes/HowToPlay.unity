@@ -409,9 +409,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269420726}
-  m_Text: 'Melee/
-
-    Pickup'
+  m_Text: Melee
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1

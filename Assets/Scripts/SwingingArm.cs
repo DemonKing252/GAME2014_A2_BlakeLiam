@@ -1,7 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+File: SwingingArm.cs
+Author: Liam Blake
+Created: 2020-11-20
+Modified: 2020-11-22
+*/
 public class SwingingArm : MonoBehaviour
 {
     [SerializeField]

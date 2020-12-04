@@ -1,6 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/*
+File: AbilityController.cs
+Author: Liam Blake
+Created: 2020-11-30
+Modified: 2020-12-02
+*/
 public enum AbilityType
 {
     Health,

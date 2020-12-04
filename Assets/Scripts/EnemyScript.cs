@@ -1,7 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+File: EnemyController.cs
+Author: Liam Blake
+Created: 2020-11-13
+Modified: 2020-11-25
+*/
 public class EnemyScript : MonoBehaviour
 {
     // 20%

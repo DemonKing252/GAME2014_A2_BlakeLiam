@@ -1,7 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+File: TilemapSpikeController.cs
+Author: Liam Blake
+Created: 2020-11-10
+Modified: 2020-11-10
+*/
 public class TilemapSpikeController : MonoBehaviour
 {
     // Start is called before the first frame update

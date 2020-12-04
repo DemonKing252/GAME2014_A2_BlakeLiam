@@ -1,7 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+File: DynamiteController.cs
+Author: Liam Blake
+Created: 2020-11-27
+Modified: 2020-11-28
+*/
 public class DynamiteController : MonoBehaviour
 {
     // Start is called before the first frame update

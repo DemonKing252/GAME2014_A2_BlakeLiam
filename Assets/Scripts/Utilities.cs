@@ -1,7 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+File: Utilities.cs
+Author: Liam Blake
+Created: 2020-11-12
+Modified: 2020-12-03
+*/
 public enum Difficulty
 {
     Easy = 0,

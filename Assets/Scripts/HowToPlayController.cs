@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+/*
+File: HowToPlayController.cs
+Author: Liam Blake
+Created: 2020-11-17
+Modified: 2020-12-03 -> Modified in inspector
+*/
 public class HowToPlayController : MonoBehaviour
 {
     [SerializeField]

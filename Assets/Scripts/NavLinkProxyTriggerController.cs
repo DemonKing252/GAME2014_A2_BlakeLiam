@@ -1,7 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+File: NavLinkProxyTriggerController.cs
+Author: Liam Blake
+Created: 2020-11-28
+Modified: 2020-11-30
+*/
 public class NavLinkProxyTriggerController : MonoBehaviour
 {
     [SerializeField]

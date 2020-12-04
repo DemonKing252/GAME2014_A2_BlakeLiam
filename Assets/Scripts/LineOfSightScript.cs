@@ -1,7 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+File: LineOfSightScript.cs
+Author: Liam Blake
+Created: 2020-11-20
+Modified: 2020-11-24
+*/
 public class LineOfSightScript : MonoBehaviour
 {
 

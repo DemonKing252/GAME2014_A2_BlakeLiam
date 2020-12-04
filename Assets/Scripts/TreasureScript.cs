@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/*
+File: TreasureScript.cs
+Author: Liam Blake
+Created: 2020-11-16
+Modified: 2020-11-29
+*/
 public class TreasureScript : MonoBehaviour
 {
     [SerializeField]
@@ -13,6 +18,7 @@ public class TreasureScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // choose a random potion to be stored in this chest (equips immediately after picking up)
         int rand = Random.Range(0, 3);
         switch (rand)
         {
@@ -39,6 +45,7 @@ public class TreasureScript : MonoBehaviour
             FindObjectOfType<PlayerController>().ability.freezePotions += ability.freezePotions;
             FindObjectOfType<PlayerController>().ability.speedPotions += ability.speedPotions;
 
+            // add time to potion
             if (FindObjectOfType<PlayerController>().ability.healthPotions > 0)
                 abilityUI.GetComponent<AbilityController>().healthTimeRemaining += 10.0f;
 

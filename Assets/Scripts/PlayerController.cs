@@ -4,7 +4,12 @@ using System.Net;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+/*
+File: PlayerController.cs
+Author: Liam Blake
+Created: 2020-11-04
+Modified: 2020-11-29
+*/
 public enum PlayerState
 {
     Idle,

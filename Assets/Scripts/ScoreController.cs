@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
+File: ScoreController.cs
+Author: Liam Blake
+Created: 2020-11-10
+Modified: 2020-11-14
+*/
 public class ScoreController : MonoBehaviour
 {
     [SerializeField]

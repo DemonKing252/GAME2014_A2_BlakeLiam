@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+/*
+File: MainMenuController.cs
+Author: Liam Blake
+Created: 2020-11-13
+Modified: 2020-11-14
+*/
 public class MainMenuController : MonoBehaviour
 {
 

@@ -1,7 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+File: PlatformTriggerScript.cs
+Author: Liam Blake
+Created: 2020-11-11
+Modified: 2020-11-12
+*/
 public class PlatformTriggerScript : MonoBehaviour
 {
     // Start is called before the first frame update
