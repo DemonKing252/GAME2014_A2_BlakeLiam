@@ -40,7 +40,6 @@ public class AbilityController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthTimeRemaining = freezeTimeRemaining = speedTimeRemaining = 0.0f;
     }
 
     // Update is called once per frame

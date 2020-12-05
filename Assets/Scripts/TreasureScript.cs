@@ -18,6 +18,7 @@ public class TreasureScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Debug.Log("hello");
         // choose a random potion to be stored in this chest (equips immediately after picking up)
         int rand = Random.Range(0, 3);
         switch (rand)
@@ -47,13 +48,22 @@ public class TreasureScript : MonoBehaviour
 
             // add time to potion
             if (FindObjectOfType<PlayerController>().ability.healthPotions > 0)
+            {
+                FindObjectOfType<PlayerController>().ability.healthPotions = 0;
                 abilityUI.GetComponent<AbilityController>().healthTimeRemaining += 10.0f;
+            }
 
             if (FindObjectOfType<PlayerController>().ability.freezePotions > 0)
+            {
                 abilityUI.GetComponent<AbilityController>().freezeTimeRemaining += 10.0f;
-
+                FindObjectOfType<PlayerController>().ability.freezePotions = 0;
+            }
+            
             if (FindObjectOfType<PlayerController>().ability.speedPotions > 0)
+            {
                 abilityUI.GetComponent<AbilityController>().speedTimeRemaining += 10.0f;
+                FindObjectOfType<PlayerController>().ability.speedPotions = 0;
+            }
 
 
             

@@ -66,6 +66,13 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        UpdateHealth(100.0f);
+        kills = 0;
+        Utilities.kills = 0;
+        FindObjectOfType<ScoreController>().score = 0.0f;
+        Utilities.score = 0;
+
+
         ability = new Ability();
         ability.Zero();
 

@@ -164,7 +164,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163351764015844972}
-  m_Text: 10s
+  m_Text: 0s
   m_OffsetZ: 0
   m_CharacterSize: 0.01
   m_LineSpacing: 1
@@ -512,7 +512,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163351764795696556}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.24, y: -3.58, z: 10}
   m_LocalScale: {x: 1, y: 0.3, z: 1}
   m_Children:
@@ -585,8 +585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d662f231a0f8740a06393e502c0875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthTimeRemaining: 10
-  freezeTimeRemaining: 10
+  healthTimeRemaining: 0
+  freezeTimeRemaining: 0
   speedTimeRemaining: 0
   texts:
   - {fileID: 1163351764015844963}
