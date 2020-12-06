@@ -178,6 +178,12 @@ public class PlayerController : MonoBehaviour
                 deathChannel.Play();
 
             UpdateHealth(health - 30.0f * Utilities.damageFactor[(int)Utilities.diff] * Time.deltaTime);
+
+            if (health <= 0.0f)
+            {
+                alive = false;
+                GetComponent<Animator>().SetInteger("State", (int)PlayerState.Dead);
+            }
         }
     }
 }
