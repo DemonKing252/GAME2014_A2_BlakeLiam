@@ -170,4 +170,14 @@ public class PlayerController : MonoBehaviour
             speed = 1.0f;
             
     }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if ((int)health % 5 == 0)
+                deathChannel.Play();
+
+            UpdateHealth(health - 30.0f * Utilities.damageFactor[(int)Utilities.diff] * Time.deltaTime);
+        }
+    }
 }
