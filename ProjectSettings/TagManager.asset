@@ -8,6 +8,8 @@ TagManager:
   - Hazard
   - Plat
   - Enemy
+  - DustTrail
+  - Blood
   layers:
   - Default
   - TransparentFX

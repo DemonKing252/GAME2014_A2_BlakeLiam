@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            if ((int)health % 5 == 0)
+            if ((int)health % 20 == 0)
                 deathChannel.Play();
 
             UpdateHealth(health - 30.0f * Utilities.damageFactor[(int)Utilities.diff] * Time.deltaTime);

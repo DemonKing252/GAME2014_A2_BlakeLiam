@@ -21,7 +21,7 @@ public class SpikeController : MonoBehaviour
     {
         
     }
-
+    bool play = false;
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -55,6 +55,11 @@ public class SpikeController : MonoBehaviour
 
         if (GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Collider2D>().IsTouching(damageCollider))
         {
+            if (!play)
+            {
+                GameObject.FindGameObjectWithTag("Player").gameObject.GetComponentInChildren<ParticleSystem>().Play();
+                play = true;
+            }
             GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().UpdateHealth(GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().health - (30.0f * Utilities.damageFactor[(int)Utilities.diff] * Time.deltaTime));
 
             if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().health <= 0.0f)
@@ -62,6 +67,11 @@ public class SpikeController : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().alive = false;
                 GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Animator>().SetInteger("State", (int)PlayerState.Dead);
             }
+        }
+        else
+        {
+
+            play = false;
         }
 
     }

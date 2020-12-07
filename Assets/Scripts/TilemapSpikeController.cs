@@ -9,6 +9,7 @@ Modified: 2020-11-10
 */
 public class TilemapSpikeController : MonoBehaviour
 {
+    bool play = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,12 @@ public class TilemapSpikeController : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<Collider2D>().IsTouching(GetComponent<Collider2D>()))
         {
             GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().UpdateHealth(GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().health - (30.0f * Utilities.damageFactor[(int)Utilities.diff] * Time.deltaTime));
-            
+
+            if (!play)
+            {
+                play = true;
+            }
+
             if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().health <= 0.0f)
             {
                 GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().alive = false;
@@ -33,7 +39,12 @@ public class TilemapSpikeController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            collision.gameObject.GetComponentInChildren<ParticleSystem>().Play();
             GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerController>().deathChannel.Play();
         }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        play = false;
     }
 }

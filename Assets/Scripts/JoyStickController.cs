@@ -37,7 +37,9 @@ public class JoyStickController : MonoBehaviour
     {
         playerController = player.GetComponent<PlayerController>();
     }
+
     // Update is called once per frame
+    [System.Obsolete]
     void FixedUpdate()
     {
         bool touched = false;
@@ -84,16 +86,27 @@ public class JoyStickController : MonoBehaviour
 
         if (localJoystickP.x > minJoystickSens && rayCastXP.collider == null && !player.GetComponent<PlayerController>().attached)
         {
+            GameObject.FindGameObjectWithTag("DustTrail").transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
             player.GetComponentInChildren<BoxCollider2D>().transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             player.GetComponent<SpriteRenderer>().flipX = false;
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<PlayerController>().speed * localJoystickP.x * playerController.maxVelX * Time.deltaTime, player.GetComponent<Rigidbody2D>().velocity.y);
         }
         else if (localJoystickP.x < -minJoystickSens && rayCastXN.collider == null && !player.GetComponent<PlayerController>().attached)
         {
+            GameObject.FindGameObjectWithTag("DustTrail").transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             player.GetComponentInChildren<BoxCollider2D>().transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
             player.GetComponent<SpriteRenderer>().flipX = true;
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<PlayerController>().speed * localJoystickP.x * playerController.maxVelX * Time.deltaTime, player.GetComponent<Rigidbody2D>().velocity.y);
         }
+        if (rayCast.collider == null && rayCast1.collider == null || player.GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f)
+        {
+            GameObject.FindGameObjectWithTag("DustTrail").GetComponent<ParticleSystem>().enableEmission = false;
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("DustTrail").GetComponent<ParticleSystem>().enableEmission = true;
+        }
+
 
         //Debug.Log(player.GetComponent<Rigidbody2D>().velocity.ToString());
         if (rayCast.collider != null || rayCast1.collider != null && !player.GetComponent<PlayerController>().attached)

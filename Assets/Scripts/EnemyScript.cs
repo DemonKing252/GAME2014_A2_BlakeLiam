@@ -44,6 +44,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         abilityUI = FindObjectOfType<AbilityController>();
+        scoreController = FindObjectOfType<ScoreController>();
     }
     
     // Update is called once per frame
@@ -59,7 +60,7 @@ public class EnemyScript : MonoBehaviour
       
         _CheckPlayer();
     }
-
+    bool now = false;
     [System.Obsolete]
     private void _CheckPlayer()
     {
@@ -71,6 +72,11 @@ public class EnemyScript : MonoBehaviour
         }
         if (should_die)
         {
+            if (!now)
+            {
+                now = true;
+                GetComponentInChildren<ParticleSystem>().Play();
+            }
             angle += 3.0f * Time.deltaTime;
             transform.rotation = Quaternion.EulerAngles(0.0f, 0.0f, angle);
             //Debug.Log(angle.ToString());
